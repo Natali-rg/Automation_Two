@@ -19,12 +19,14 @@ public class NewsPage {
     @FindBy(xpath = "//li[@class=\"theme-list_item\"]")
     List<WebElement> listBlogMenu;
 
+    @FindBy(xpath = "//ul[contains(@class, 'posts_list') and contains (@class, 'post-list')]")
+    WebElement listNews;
+
     public NewsPage(WebDriver driver) {
         PageFactory.initElements(driver,this);
     }
 
     public void clickBlogButton() {
-        //blogButton.findElement(By.tagName("a")).getAttribute("href");
         blogButton.click();
     }
 
@@ -32,6 +34,18 @@ public class NewsPage {
         for(WebElement l:listBlogMenu){
             System.out.println(l.findElement(By.tagName("a")).getAttribute("href"));
         }
+    }
+    public void clickBlogMenu(String name){
+        for(WebElement l:listBlogMenu){
+            if (l.findElement(By.tagName("a")).getAttribute("href").contains(name));
+            l.click();
+            break;
+        }
+    }
+
+    public int getListNewsSize(){
+        return listNews.findElements(By.tagName("li")).size();
+
     }
 
 
