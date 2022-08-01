@@ -36,7 +36,7 @@ public class DriverFactory {
         options.addArguments("--start-maximized");//открывает хром в полноекранном режиме
         WebDriver driver=new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        return new ChromeDriver();
+        return driver;
     }
 
 }

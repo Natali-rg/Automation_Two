@@ -1,4 +1,5 @@
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import pages.NewsPage;
@@ -27,10 +28,15 @@ public class TestBlogPage extends Base{
 
     @Test
     public void clickBlogNews() {
-        newsPage.clickBlogLinc();
-
+        newsPage.clickBlogButton();
+        Assert.assertEquals(driver.getTitle(),"Корисні матеріали: статті та новини IT-індустрії | Комп'ютерна школа Hillel");
+        newsPage=new NewsPage(driver);
     }
 
+    @Test
+    public void TestFrontEnd() {
+        newsPage.printHrefListBlogMenu();
+    }
 
 
 

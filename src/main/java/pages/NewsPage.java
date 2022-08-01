@@ -1,33 +1,47 @@
 package pages;
 
 import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
-import static org.openqa.selenium.support.PageFactory.initElements;
+
 
 public class NewsPage {
-    @FindBy(className = "site-nav_menu site-nav-menu")
-    WebElement menuList;
+    @FindBy(xpath = "//li[contains(@class, 'site-nav-menu_item') and contains(@ class, '-blog')] ")
+    WebElement blogButton;
+
+    @FindBy(xpath = "//li[@class=\"theme-list_item\"]")
+    List<WebElement> listBlogMenu;
 
     public NewsPage(WebDriver driver) {
         PageFactory.initElements(driver,this);
     }
 
-    public void clickBlogLinc(){
-        List<WebElement> list=new ArrayList<>(menuList.findElements(By.className("site-nav-menu_list")));
-        System.out.println(list.size());
-        /*for(WebElement l:list){
-            if()
-        }*/
+    public void clickBlogButton() {
+        //blogButton.findElement(By.tagName("a")).getAttribute("href");
+        blogButton.click();
+    }
 
+    public void printHrefListBlogMenu() {
+        for(WebElement l:listBlogMenu){
+            System.out.println(l.findElement(By.tagName("a")).getAttribute("href"));
+        }
     }
 
 
 
+
+
+
+
 }
+
+
+
+
