@@ -46,13 +46,8 @@ public class NewsPage {
     public int getListNewsSize(){
         return listNews.findElements(By.tagName("li")).size();
 
+
     }
-
-
-
-
-
-
 
 }
 
